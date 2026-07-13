@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#07101d" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="PCCD" />
+  <title>PCCD Commit 001</title>
+  <style>
+    :root{
+      --bg:#07101d;
+      --panel:#101a2e;
+      --panel2:#16243d;
+      --line:#2a3c5e;
+      --text:#eef4ff;
+      --muted:#98a8c3;
+      --accent:#7ea4ff;
+      --accent2:#72ddb4;
+      --warn:#ffd166;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;min-height:100%;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans JP",sans-serif}
+    body{
+      background:
+        radial-gradient(circle at top right,rgba(74,101,172,.22),transparent 34%),
+        linear-gradient(180deg,#07101d 0%,#0d172a 100%);
+    }
+    button,input{font:inherit}
+    button{cursor:pointer}
+    .app{width:min(980px,100%);margin:0 auto;padding:calc(18px + env(safe-area-inset-top)) 16px calc(42px + env(safe-area-inset-bottom))}
+    .hero{display:flex;justify-content:space-between;gap:14px;align-items:flex-start;margin-bottom:18px}
+    .eyebrow{margin:0 0 6px;color:#a9bfff;font-size:11px;font-weight:800;letter-spacing:.12em}
+    h1{margin:0;font-size:44px;line-height:.95;letter-spacing:-.04em}
+    .sub{margin:10px 0 0;color:var(--muted);font-size:13px;line-height:1.6}
+    .version{padding:7px 10px;border:1px solid var(--line);border-radius:999px;color:var(--muted);font-size:11px;white-space:nowrap;background:rgba(16,26,46,.8)}
+    .metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-bottom:12px}
+    .metric,.panel{background:rgba(16,26,46,.94);border:1px solid var(--line);border-radius:15px;box-shadow:0 12px 28px rgba(0,0,0,.12)}
+    .metric{padding:13px}
+    .metric span{display:block;color:var(--muted);font-size:11px}
+    .metric strong{display:block;margin-top:3px;font-size:26px}
+    .grid{display:grid;grid-template-columns:1.2fr 1fr;gap:12px}
+    .panel{padding:16px}
+    .wide{grid-column:1/-1}
+    .sectionLabel{margin:0 0 6px;color:#a9bfff;font-size:10px;font-weight:800;letter-spacing:.12em}
+    h2{margin:0;font-size:19px}
+    .panelHeader{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:14px}
+    .ghost{border:1px solid var(--line);background:transparent;color:var(--text);border-radius:10px;padding:8px 10px}
+    .question{display:grid;grid-template-columns:38px 1fr;gap:11px;background:var(--panel2);border-radius:13px;padding:14px}
+    .qnum{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;background:var(--accent);color:#07101d;font-weight:900;font-size:11px}
+    .question p{margin:2px 0 11px;font-weight:800}
+    .chips{display:flex;flex-wrap:wrap;gap:7px}
+    .chips button{border:1px solid #3a537f;background:#172844;color:var(--text);border-radius:999px;padding:8px 10px}
+    .chips button.active{background:var(--accent);color:#07101d;border-color:var(--accent)}
+    .searchLabel{display:block;margin:14px 0 6px;color:var(--muted);font-size:11px}
+    .search{width:100%;padding:11px 12px;border-radius:10px;border:1px solid var(--line);background:#0a1425;color:var(--text);outline:none}
+    .pokemonList{display:grid;gap:7px;margin-top:10px}
+    .pokemonBtn{display:flex;justify-content:space-between;align-items:center;gap:10px;width:100%;padding:11px 12px;border-radius:10px;border:1px solid transparent;background:#14233b;color:var(--text);text-align:left}
+    .pokemonBtn small{color:var(--muted)}
+    .pokemonBtn.hidden{display:none}
+    .researchCard{margin-top:14px;background:var(--panel2);border-radius:13px;padding:14px}
+    .researchCard p{margin:0 0 11px;font-weight:800}
+    .track{height:8px;border-radius:999px;background:#263550;overflow:hidden;margin-bottom:8px}
+    .track span{display:block;height:100%;width:60%;background:linear-gradient(90deg,var(--accent),var(--accent2))}
+    .researchCard small{color:var(--muted)}
+    .primary{width:100%;border:0;border-radius:11px;padding:12px 14px;background:var(--accent);color:#07101d;font-weight:900}
+    .helper{margin:10px 0 14px;color:var(--muted);font-size:13px;line-height:1.6}
+    .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(12px);padding:10px 13px;border-radius:999px;background:#1a2a47;border:1px solid #3b5688;color:var(--text);font-size:12px;opacity:0;pointer-events:none;transition:.2s}
+    .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+    @media(max-width:720px){
+      h1{font-size:39px}
+      .grid{grid-template-columns:1fr}
+      .wide{grid-column:auto}
+      .question{grid-template-columns:1fr}
+      .metrics{gap:7px}
+      .metric{padding:11px}
+      .metric strong{font-size:23px}
+    }
+  </style>
+</head>
+<body>
+  <main class="app">
+    <header class="hero">
+      <div>
+        <p class="eyebrow">Pokémon Champions Competitive Database</p>
+        <h1>PCCD</h1>
+        <p class="sub">考えることは減らさず、入力と整理の手間を減らす。</p>
+      </div>
+      <span class="version">Commit 001</span>
+    </header>
+
+    <section class="metrics" aria-label="研究状況">
+      <article class="metric"><span>未検証</span><strong>3</strong></article>
+      <article class="metric"><span>検証中</span><strong>5</strong></article>
+      <article class="metric"><span>最近更新</span><strong>2</strong></article>
+    </section>
+
+    <section class="grid">
+      <article class="panel wide">
+        <div class="panelHeader">
+          <div>
+            <p class="sectionLabel">TODAY</p>
+            <h2>今日の研究</h2>
+          </div>
+          <button class="ghost" id="continueBtn">続きから</button>
+        </div>
+
+        <div class="question">
+          <div class="qnum">01</div>
+          <div>
+            <p>今、何に困っていますか？</p>
+            <div class="chips" id="problemChips">
+              <button type="button">重いポケモン</button>
+              <button type="button">勝ち筋不足</button>
+              <button type="button">選出</button>
+              <button type="button">その他</button>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="panel">
+        <p class="sectionLabel">DATABASE</p>
+        <h2>ポケモンDB</h2>
+        <label class="searchLabel" for="searchInput">検索</label>
+        <input id="searchInput" class="search" placeholder="ポケモン名を入力" />
+        <div class="pokemonList" id="pokemonList">
+          <button class="pokemonBtn" data-name="ガブリアス"><span>ガブリアス</span><small>Decision Viewへ</small></button>
+          <button class="pokemonBtn" data-name="ルカリオ"><span>ルカリオ</span><small>Decision Viewへ</small></button>
+          <button class="pokemonBtn" data-name="メタグロス"><span>メタグロス</span><small>Decision Viewへ</small></button>
+          <button class="pokemonBtn" data-name="サーフゴー"><span>サーフゴー</span><small>Decision Viewへ</small></button>
+          <button class="pokemonBtn" data-name="ミミッキュ"><span>ミミッキュ</span><small>Decision Viewへ</small></button>
+        </div>
+      </article>
+
+      <article class="panel">
+        <p class="sectionLabel">RESEARCH</p>
+        <h2>進行中の研究</h2>
+        <div class="researchCard">
+          <p>ガブリアスはスカーフが最適か？</p>
+          <div class="track"><span></span></div>
+          <small>18 / 30戦 ・ 信頼度 67%</small>
+        </div>
+      </article>
+
+      <article class="panel wide">
+        <p class="sectionLabel">QUICK ACTION</p>
+        <h2>10秒で記録</h2>
+        <p class="helper">文章を書かず、タップだけで対戦ログを残す入口です。</p>
+        <button class="primary" id="quickLogBtn">＋ 対戦ログを追加</button>
+      </article>
+    </section>
+  </main>
+
+  <div class="toast" id="toast">保存しました</div>
+
+  <script>
+    const toast = document.getElementById("toast");
+    const showToast = (message) => {
+      toast.textContent = message;
+      toast.classList.add("show");
+      window.setTimeout(() => toast.classList.remove("show"), 1600);
+    };
+
+    document.querySelectorAll("#problemChips button").forEach((button) => {
+      button.addEventListener("click", () => {
+        document.querySelectorAll("#problemChips button").forEach((item) => item.classList.remove("active"));
+        button.classList.add("active");
+        localStorage.setItem("pccd_current_problem", button.textContent);
+        showToast("「" + button.textContent + "」を選択");
+      });
+    });
+
+    const savedProblem = localStorage.getItem("pccd_current_problem");
+    if (savedProblem) {
+      document.querySelectorAll("#problemChips button").forEach((button) => {
+        if (button.textContent === savedProblem) button.classList.add("active");
+      });
+    }
+
+    const searchInput = document.getElementById("searchInput");
+    searchInput.addEventListener("input", () => {
+      const query = searchInput.value.trim().toLowerCase();
+      document.querySelectorAll(".pokemonBtn").forEach((button) => {
+        const name = button.dataset.name.toLowerCase();
+        button.classList.toggle("hidden", query && !name.includes(query));
+      });
+    });
+
+    document.querySelectorAll(".pokemonBtn").forEach((button) => {
+      button.addEventListener("click", () => {
+        showToast(button.dataset.name + "は次のCommitで開けるようになります");
+      });
+    });
+
+    document.getElementById("continueBtn").addEventListener("click", () => {
+      showToast("研究の続きは次のCommitで実装");
+    });
+
+    document.getElementById("quickLogBtn").addEventListener("click", () => {
+      const logs = Number(localStorage.getItem("pccd_quick_logs") || "0") + 1;
+      localStorage.setItem("pccd_quick_logs", String(logs));
+      showToast("対戦ログ入口を記録しました（" + logs + "件）");
+    });
+  </script>
+</body>
+</html>
