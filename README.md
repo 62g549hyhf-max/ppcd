@@ -1,26 +1,23 @@
-# PCCD v0.7 — Research OS
+# PCCD HTML v0.8
 
-v0.6までの機能を保持し、UI FoundationとAcademy拡張を追加した統合版です。
+GitHub PagesとiPhoneでそのまま使える、高品質UI版です。
 
-## 主な更新
-- Apple × Linear × Arcを意識した全面UIリニューアル
-- ガラスカード、グラデーション、アニメーション
-- HomeにResearch OSヒーローとConfidenceリング
-- Team DNAプレビュー
-- ポケモン別テーマカードと将来画像用プレースホルダー
-- Academyのカテゴリフィルター
-- H / A / B / C / D / S
-- 努力値 / 個体値 / 性格 / AS252 / ぶっぱ
-- 勝ち筋 / 負け筋 / サイクル / 役割集中
-- 使用率 / 勝率 / 信頼度 / サンプル数
-- 既存のDecision / Research / Evidence / localStorage保存を維持
+## 主な内容
+- プレビューに近いResearch OSデザイン
+- iPhone対応
+- Home / Pokémon / Decision / Research / Academy
+- ガラスUI、グラデーション、カードレイアウト
+- ポケモン別テーマカード
+- 3タップ構築相談
+- 研究テーマ保存
+- 対戦ログ保存
+- Academy用語辞典
+- H / A / B / C / D / S / 努力値 / AS252 など
 
 ## 更新方法
-ZIPを解凍し、以下4ファイルをGitHubリポジトリ直下へアップロードしてください。
+ZIPを解凍し、以下4ファイルをGitHubリポジトリ直下へ上書きしてください。
 
 - index.html
 - style.css
 - script.js
 - README.md
-
-同名ファイルは上書きで問題ありません。

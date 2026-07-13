@@ -3,193 +3,226 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#07101d">
+  <meta name="theme-color" content="#060912">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="PCCD">
-  <title>PCCD v0.7 — Research OS</title>
+  <title>PCCD HTML v0.8</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="app">
-    <header class="topbar">
-      <div>
-        <p class="eyebrow">Pokémon Champions Competitive Database</p>
-        <h1>PCCD</h1>
-        <p class="subtitle">Competitive Research OS — 判断はあなたに。面倒はPCCDに。</p>
-      </div>
-      <span class="version">v0.7 · Research OS</span>
-    </header>
+  <div class="ambient ambient-a"></div>
+  <div class="ambient ambient-b"></div>
 
-    <nav class="tabs" aria-label="メインメニュー">
-      <button class="tab active" data-page="home">Home</button>
-      <button class="tab" data-page="database">Pokémon</button>
-      <button class="tab" data-page="decision">Decision</button>
-      <button class="tab" data-page="research">Research</button>
-      <button class="tab" data-page="academy">Academy</button>
-    </nav>
-
-    <main>
-      <section id="home" class="page active">
-        <article class="hero-card glass-card">
-          <div class="hero-copy">
-            <p class="section-label">RESEARCH OS</p>
-            <h2>こんばんは、Ren</h2>
-            <p>昨日までの研究を引き継ぎ、今日の判断を少しだけ前へ進めます。</p>
-            <div class="hero-actions">
-              <button class="primary compact-btn" data-page-link="decision">構築相談を始める</button>
-              <button class="ghost compact-btn" data-page-link="research">研究を続ける</button>
-            </div>
-          </div>
-          <div class="confidence-orb" aria-label="総合研究信頼度42%">
-            <span>CONFIDENCE</span>
-            <strong>42%</strong>
-            <small>研究基盤</small>
-          </div>
-        </article>
-
-        <div class="metrics">
-          <article class="metric"><span>未検証</span><strong id="metricUnverified">3</strong></article>
-          <article class="metric"><span>検証中</span><strong id="metricTesting">2</strong></article>
-          <article class="metric"><span>ログ</span><strong id="metricLogs">0</strong></article>
+  <div class="shell">
+    <aside class="sidebar glass">
+      <div class="brand">
+        <div class="brand-mark">P</div>
+        <div>
+          <strong>PCCD</strong>
+          <small>Research OS</small>
         </div>
+      </div>
 
-        <article class="panel">
-          <p class="section-label">TODAY</p>
-          <h2>今、何に困っていますか？</h2>
-          <div class="choice-grid" id="homeProblems">
-            <button data-value="重いポケモン">重いポケモン</button>
-            <button data-value="勝ち筋不足">勝ち筋不足</button>
-            <button data-value="選出">選出</button>
-            <button data-value="プレイング">プレイング</button>
-          </div>
-          <button class="primary" id="startDecisionBtn">相談を始める</button>
-        </article>
+      <nav class="nav" aria-label="メインナビゲーション">
+        <button class="nav-item active" data-page="home">
+          <span class="nav-icon">⌂</span><span>Home</span>
+        </button>
+        <button class="nav-item" data-page="pokemon">
+          <span class="nav-icon">◈</span><span>Pokémon</span>
+        </button>
+        <button class="nav-item" data-page="decision">
+          <span class="nav-icon">◇</span><span>Decision</span>
+        </button>
+        <button class="nav-item" data-page="research">
+          <span class="nav-icon">◎</span><span>Research</span>
+        </button>
+        <button class="nav-item" data-page="academy">
+          <span class="nav-icon">A</span><span>Academy</span>
+        </button>
+      </nav>
 
-        <article class="panel">
-          <div class="panel-head">
-            <div>
-              <p class="section-label">NEXT STEP</p>
-              <h2>次に検証すること</h2>
+      <div class="sidebar-footer">
+        <span class="status-dot"></span>
+        <div>
+          <strong>Prototype Online</strong>
+          <small>HTML Release v0.8</small>
+        </div>
+      </div>
+    </aside>
+
+    <main class="workspace">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">COMPETITIVE RESEARCH OS</p>
+          <h1>こんばんは、Ren</h1>
+          <p class="lead">判断はあなたに。面倒な整理と記録はPCCDに。</p>
+        </div>
+        <button class="profile-button" type="button" aria-label="プロフィール">
+          <span>R</span>
+        </button>
+      </header>
+
+      <section id="home" class="page active">
+        <article class="hero glass">
+          <div class="hero-copy">
+            <span class="section-kicker">TODAY'S RESEARCH</span>
+            <h2>答えを探す前に、<br>問題を分解する。</h2>
+            <p>困っていることを選ぶだけで、PCCDが質問・候補・検証テーマを整理します。</p>
+            <div class="hero-actions">
+              <button class="button primary" data-go="decision">構築相談を始める</button>
+              <button class="button secondary" data-go="research">研究を続ける</button>
             </div>
           </div>
-          <div id="nextResearchCard" class="research-summary"></div>
-        </article>
 
-        <article class="panel dna-panel">
-          <div class="panel-head">
-            <div>
-              <p class="section-label">TEAM DNA · PREVIEW</p>
-              <h2>構築の性格</h2>
+          <div class="confidence-ring" style="--value:42">
+            <div class="confidence-inner">
+              <small>CONFIDENCE</small>
+              <strong>42%</strong>
+              <span>研究基盤</span>
             </div>
-            <span class="micro-badge">試作</span>
           </div>
-          <div class="dna-bars">
-            <div><span>対面</span><i><b style="width:82%"></b></i><small>82</small></div>
-            <div><span>崩し</span><i><b style="width:61%"></b></i><small>61</small></div>
-            <div><span>サイクル</span><i><b style="width:47%"></b></i><small>47</small></div>
-            <div><span>耐久</span><i><b style="width:38%"></b></i><small>38</small></div>
-          </div>
-          <p class="panel-note">現在は仮データ。Builder実装後、登録した6匹から自動算出します。</p>
         </article>
 
-        <article class="panel">
-          <p class="section-label">QUICK LOG</p>
-          <h2>10秒で対戦ログ</h2>
-          <div class="quick-flow">
-            <label>結果
+        <section class="stats">
+          <article class="stat-card glass">
+            <small>未検証</small><strong id="statUnverified">03</strong><span>Hypotheses</span>
+          </article>
+          <article class="stat-card glass">
+            <small>検証中</small><strong>02</strong><span>Active</span>
+          </article>
+          <article class="stat-card glass">
+            <small>対戦ログ</small><strong id="statLogs">00</strong><span>Battle logs</span>
+          </article>
+        </section>
+
+        <section class="home-grid">
+          <article class="panel glass active-research">
+            <div class="panel-head">
+              <div>
+                <span class="section-kicker">ACTIVE RESEARCH</span>
+                <h3>ガブリアスはスカーフが最適か？</h3>
+              </div>
+              <span class="pill blue">検証中</span>
+            </div>
+            <p>現環境での速度補完と、ラム・タスキ型の再現性を比較中。</p>
+            <div class="progress"><i style="width:60%"></i></div>
+            <footer><span>18 / 30戦</span><span>信頼度 67%</span></footer>
+          </article>
+
+          <article class="panel glass next-question">
+            <span class="section-kicker">NEXT QUESTION</span>
+            <h3>受け崩し不足は、構築変更で解決すべきか？</h3>
+            <p>技・持ち物・選出で解決できる範囲を先に切り分けます。</p>
+            <button class="text-link" data-go="decision">検証を始める →</button>
+          </article>
+
+          <article class="panel glass dna-panel">
+            <div class="panel-head">
+              <div>
+                <span class="section-kicker">TEAM DNA</span>
+                <h3>構築の性格</h3>
+              </div>
+              <span class="pill">Preview</span>
+            </div>
+            <div class="dna-list">
+              <div><span>対面</span><i><b style="width:82%"></b></i><small>82</small></div>
+              <div><span>崩し</span><i><b style="width:61%"></b></i><small>61</small></div>
+              <div><span>サイクル</span><i><b style="width:47%"></b></i><small>47</small></div>
+              <div><span>耐久</span><i><b style="width:38%"></b></i><small>38</small></div>
+            </div>
+          </article>
+
+          <article class="panel glass quick-log">
+            <span class="section-kicker">QUICK LOG</span>
+            <h3>10秒で対戦ログ</h3>
+            <div class="quick-fields">
               <select id="quickResult">
-                <option value="勝ち">勝ち</option>
-                <option value="負け">負け</option>
+                <option>勝ち</option>
+                <option>負け</option>
               </select>
-            </label>
-            <label>相手
               <select id="quickOpponent">
-                <option value="キュレム">キュレム</option>
-                <option value="ガブリアス">ガブリアス</option>
-                <option value="ルカリオ">ルカリオ</option>
-                <option value="メタグロス">メタグロス</option>
-                <option value="その他">その他</option>
+                <option>キュレム</option>
+                <option>ガブリアス</option>
+                <option>ルカリオ</option>
+                <option>メタグロス</option>
+                <option>その他</option>
               </select>
-            </label>
-            <label>主因
               <select id="quickCause">
-                <option value="構築">構築</option>
-                <option value="選出">選出</option>
-                <option value="プレイング">プレイング</option>
-                <option value="情報不足">情報不足</option>
+                <option>構築</option>
+                <option>選出</option>
+                <option>プレイング</option>
+                <option>情報不足</option>
               </select>
-            </label>
-          </div>
-          <button class="primary" id="saveQuickLogBtn">保存</button>
-        </article>
+            </div>
+            <button class="button primary full" id="saveQuickLog">ログを保存</button>
+          </article>
+        </section>
       </section>
 
-      <section id="database" class="page">
-        <article class="panel">
-          <p class="section-label">DATABASE</p>
-          <h2>ポケモンDB</h2>
-          <input id="pokemonSearch" class="search" placeholder="ポケモン名・役割で検索">
-          <div id="pokemonList" class="pokemon-list"></div>
-        </article>
-
-        <article id="pokemonDetail" class="panel pokemon-detail hidden">
-          <div id="pokemonVisual" class="pokemon-visual theme-garchomp">
-            <div class="pokemon-art-placeholder" aria-hidden="true">
-              <span id="pokemonMonogram">G</span>
-            </div>
-            <div class="pokemon-visual-copy">
-              <p class="section-label">POKÉMON PROFILE</p>
-              <strong id="pokemonEnglishName">GARCHOMP</strong>
-              <small id="pokemonTypeLine">DRAGON / GROUND</small>
-            </div>
+      <section id="pokemon" class="page">
+        <div class="page-title">
+          <div>
+            <p class="eyebrow">POKÉMON DATABASE</p>
+            <h2>役割から探す。</h2>
+            <p>名前だけでなく、構築で必要な役割から候補を絞り込みます。</p>
           </div>
-          <div class="panel-head">
+          <input id="pokemonSearch" class="search" placeholder="名前・役割で検索">
+        </div>
+
+        <div id="pokemonGrid" class="pokemon-grid"></div>
+
+        <article id="pokemonDetail" class="pokemon-detail glass hidden">
+          <div id="pokemonHero" class="pokemon-hero theme-garchomp">
+            <div class="pokemon-monogram" id="pokemonMonogram">G</div>
             <div>
-              <p class="section-label">DECISION VIEW</p>
-              <h2 id="detailName">ガブリアス</h2>
+              <p class="section-kicker">POKÉMON PROFILE</p>
+              <h2 id="pokemonName">ガブリアス</h2>
+              <span id="pokemonEnglish">GARCHOMP</span>
+              <small id="pokemonType">DRAGON / GROUND</small>
             </div>
-            <button class="ghost" id="closeDetailBtn">閉じる</button>
+            <button class="icon-button" id="closePokemon">×</button>
           </div>
 
-          <div class="score-grid">
-            <div><span>理論</span><strong id="theoryScore">—</strong></div>
-            <div><span>環境</span><strong id="envScore">—</strong></div>
-            <div><span>総合</span><strong id="overallScore">—</strong></div>
-            <div><span>信頼度</span><strong id="confidenceScore">—</strong></div>
+          <div class="detail-body">
+            <div class="score-row">
+              <div><small>THEORY</small><strong id="scoreTheory">92</strong></div>
+              <div><small>ENVIRONMENT</small><strong id="scoreEnvironment">78</strong></div>
+              <div><small>OVERALL</small><strong id="scoreOverall">85</strong></div>
+              <div><small>CONFIDENCE</small><strong id="scoreConfidence">45%</strong></div>
+            </div>
+
+            <div class="detail-grid">
+              <section>
+                <span class="section-kicker">BUILDS</span>
+                <div id="buildList" class="card-list"></div>
+              </section>
+              <section>
+                <span class="section-kicker">DECISION MATERIAL</span>
+                <div id="knowledgeList" class="card-list"></div>
+              </section>
+            </div>
+
+            <button class="button primary full" id="useInDecision">このポケモンで相談する</button>
           </div>
-
-          <div id="evidenceBox" class="evidence-box"></div>
-
-          <h3>何役で使いたい？</h3>
-          <div id="roleChoices" class="choice-grid compact"></div>
-
-          <h3>候補Build</h3>
-          <div id="buildList" class="stack"></div>
-
-          <h3>判断材料</h3>
-          <div id="knowledgeBlocks" class="stack"></div>
-
-          <h3>採用理由</h3>
-          <div id="adoptReasons" class="chip-list"></div>
-
-          <h3>気になること</h3>
-          <div id="concerns" class="chip-list"></div>
-
-          <button class="primary" id="openDecisionFromPokemon">このポケモンで相談する</button>
         </article>
       </section>
 
       <section id="decision" class="page">
-        <article class="panel">
-          <p class="section-label">DECISION SUPPORT</p>
-          <h2>構築相談</h2>
+        <div class="page-title">
+          <div>
+            <p class="eyebrow">DECISION SUPPORT</p>
+            <h2>問題を3段階で分解する。</h2>
+            <p>文字入力なしで、改善候補まで進めます。</p>
+          </div>
+        </div>
 
-          <div class="step">
-            <span>1</span>
+        <article class="decision-flow glass">
+          <div class="decision-step">
+            <span class="step-number">01</span>
             <div>
               <h3>何を解決したい？</h3>
-              <div class="choice-grid compact" id="decisionProblem">
+              <div class="choice-grid" id="problemChoices">
                 <button data-value="重いポケモン">重いポケモン</button>
                 <button data-value="勝ち筋不足">勝ち筋不足</button>
                 <button data-value="選出">選出</button>
@@ -198,11 +231,11 @@
             </div>
           </div>
 
-          <div class="step">
-            <span>2</span>
+          <div class="decision-step">
+            <span class="step-number">02</span>
             <div>
               <h3>対象は？</h3>
-              <div class="choice-grid compact" id="decisionTarget">
+              <div class="choice-grid" id="targetChoices">
                 <button data-value="キュレム">キュレム</button>
                 <button data-value="ガブリアス">ガブリアス</button>
                 <button data-value="ルカリオ">ルカリオ</button>
@@ -211,85 +244,106 @@
             </div>
           </div>
 
-          <div class="step">
-            <span>3</span>
+          <div class="decision-step">
+            <span class="step-number">03</span>
             <div>
-              <h3>何が辛い？</h3>
-              <div class="choice-grid compact" id="decisionCategory">
-                <button data-value="攻撃面">攻撃面</button>
-                <button data-value="防御面">防御面</button>
-                <button data-value="選出面">選出面</button>
-                <button data-value="情報面">情報面</button>
+              <h3>どこが辛い？</h3>
+              <div class="choice-grid" id="painChoices">
+                <button data-value="一撃で倒される">一撃で倒される</button>
+                <button data-value="後出しできない">後出しできない</button>
+                <button data-value="技が一貫する">技が一貫する</button>
+                <button data-value="型が読めない">型が読めない</button>
               </div>
-
-              <div id="decisionPain" class="choice-grid compact"></div>
             </div>
           </div>
 
-          <button class="primary" id="generateAdviceBtn">改善候補を見る</button>
+          <button class="button primary full" id="generateAdvice">改善候補を見る</button>
         </article>
 
-        <article id="advicePanel" class="panel hidden">
-          <p class="section-label">RECOMMENDATION</p>
-          <h2>改善候補</h2>
-          <div id="adviceSummary" class="summary-box"></div>
-          <div id="adviceList" class="stack"></div>
-          <div id="adviceEvidence" class="evidence-box"></div>
-          <button class="ghost full" id="saveAsResearchBtn">研究テーマとして保存</button>
+        <article id="advicePanel" class="panel glass hidden">
+          <div class="panel-head">
+            <div>
+              <span class="section-kicker">RECOMMENDATION</span>
+              <h3>改善候補</h3>
+            </div>
+            <span class="pill amber">仮説</span>
+          </div>
+          <p id="adviceSummary"></p>
+          <div id="adviceList" class="card-list"></div>
+          <button class="button secondary full" id="saveResearch">研究テーマとして保存</button>
         </article>
       </section>
 
       <section id="research" class="page">
-        <article class="panel">
-          <div class="panel-head">
-            <div>
-              <p class="section-label">RESEARCH</p>
-              <h2>研究テーマ</h2>
-            </div>
-            <button class="ghost" id="clearLogsBtn">保存データ初期化</button>
+        <div class="page-title">
+          <div>
+            <p class="eyebrow">RESEARCH LAB</p>
+            <h2>結論より、履歴を残す。</h2>
+            <p>検証数・根拠・信頼度を分けて保存します。</p>
           </div>
-          <div id="researchList" class="stack"></div>
-        </article>
+        </div>
 
-        <article class="panel">
-          <p class="section-label">BATTLE LOG</p>
-          <h2>対戦ログ</h2>
-          <div id="battleLogList" class="stack"></div>
-        </article>
+        <div class="research-grid">
+          <article class="panel glass">
+            <div class="panel-head">
+              <div>
+                <span class="section-kicker">RESEARCH THEMES</span>
+                <h3>研究テーマ</h3>
+              </div>
+              <span class="pill blue" id="researchCount">2件</span>
+            </div>
+            <div id="researchList" class="card-list"></div>
+          </article>
+
+          <article class="panel glass">
+            <div class="panel-head">
+              <div>
+                <span class="section-kicker">BATTLE LOG</span>
+                <h3>対戦ログ</h3>
+              </div>
+              <button class="icon-button" id="clearData">↺</button>
+            </div>
+            <div id="battleLogList" class="card-list"></div>
+          </article>
+        </div>
       </section>
 
       <section id="academy" class="page">
-        <article class="panel">
-          <p class="section-label">PCCD ACADEMY</p>
-          <h2>競技用語辞典</h2>
-          <p class="academy-intro">分からない言葉をその場で理解し、実際の型や構築へつなげます。</p>
-          <div class="academy-levels" id="academyLevels">
-            <button class="selected" data-level="all">すべて</button>
-            <button data-level="basic">基礎</button>
-            <button data-level="battle">対戦</button>
-            <button data-level="build">構築</button>
-            <button data-level="research">研究</button>
+        <div class="page-title">
+          <div>
+            <p class="eyebrow">PCCD ACADEMY</p>
+            <h2>競技用語を、その場で理解する。</h2>
+            <p>初心者向けの説明から、構築・研究レベルまで段階的に整理します。</p>
           </div>
           <input id="glossarySearch" class="search" placeholder="A・努力値・受け出し など">
-          <div id="glossaryList" class="stack"></div>
-        </article>
+        </div>
+
+        <div class="academy-tabs" id="academyTabs">
+          <button class="active" data-category="all">すべて</button>
+          <button data-category="basic">基礎</button>
+          <button data-category="battle">対戦</button>
+          <button data-category="build">構築</button>
+          <button data-category="research">研究</button>
+        </div>
+
+        <div id="glossaryGrid" class="academy-grid"></div>
       </section>
     </main>
   </div>
 
-  <div id="glossaryModal" class="modal hidden" role="dialog" aria-modal="true">
-    <div class="modal-card">
-      <button id="closeGlossaryModal" class="ghost close-btn">閉じる</button>
-      <p class="section-label">PCCD ACADEMY</p>
-      <h2 id="glossaryTerm"></h2>
-      <p id="glossaryShort" class="lead"></p>
-      <div id="glossaryDetail" class="summary-box"></div>
-      <div id="glossaryExample" class="example-box"></div>
-      <div id="glossaryRelated" class="chip-list"></div>
+  <div id="glossaryModal" class="modal hidden">
+    <div class="modal-card glass">
+      <button class="icon-button modal-close" id="closeModal">×</button>
+      <span class="section-kicker">PCCD ACADEMY</span>
+      <h2 id="modalTerm"></h2>
+      <p id="modalShort" class="modal-lead"></p>
+      <div id="modalDetail" class="modal-box"></div>
+      <div id="modalExample" class="example-box"></div>
+      <div id="modalRelated" class="related-list"></div>
     </div>
   </div>
 
-  <div class="toast" id="toast"></div>
+  <div id="toast" class="toast"></div>
   <script src="script.js"></script>
 </body>
 </html>
