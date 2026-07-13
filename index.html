@@ -7,7 +7,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="PCCD">
-  <title>PCCD v0.6</title>
+  <title>PCCD v0.7 — Research OS</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -16,9 +16,9 @@
       <div>
         <p class="eyebrow">Pokémon Champions Competitive Database</p>
         <h1>PCCD</h1>
-        <p class="subtitle">考えることは減らさず、入力・整理・調べる手間を減らす。</p>
+        <p class="subtitle">Competitive Research OS — 判断はあなたに。面倒はPCCDに。</p>
       </div>
-      <span class="version">v0.6</span>
+      <span class="version">v0.7 · Research OS</span>
     </header>
 
     <nav class="tabs" aria-label="メインメニュー">
@@ -31,6 +31,23 @@
 
     <main>
       <section id="home" class="page active">
+        <article class="hero-card glass-card">
+          <div class="hero-copy">
+            <p class="section-label">RESEARCH OS</p>
+            <h2>こんばんは、Ren</h2>
+            <p>昨日までの研究を引き継ぎ、今日の判断を少しだけ前へ進めます。</p>
+            <div class="hero-actions">
+              <button class="primary compact-btn" data-page-link="decision">構築相談を始める</button>
+              <button class="ghost compact-btn" data-page-link="research">研究を続ける</button>
+            </div>
+          </div>
+          <div class="confidence-orb" aria-label="総合研究信頼度42%">
+            <span>CONFIDENCE</span>
+            <strong>42%</strong>
+            <small>研究基盤</small>
+          </div>
+        </article>
+
         <div class="metrics">
           <article class="metric"><span>未検証</span><strong id="metricUnverified">3</strong></article>
           <article class="metric"><span>検証中</span><strong id="metricTesting">2</strong></article>
@@ -57,6 +74,23 @@
             </div>
           </div>
           <div id="nextResearchCard" class="research-summary"></div>
+        </article>
+
+        <article class="panel dna-panel">
+          <div class="panel-head">
+            <div>
+              <p class="section-label">TEAM DNA · PREVIEW</p>
+              <h2>構築の性格</h2>
+            </div>
+            <span class="micro-badge">試作</span>
+          </div>
+          <div class="dna-bars">
+            <div><span>対面</span><i><b style="width:82%"></b></i><small>82</small></div>
+            <div><span>崩し</span><i><b style="width:61%"></b></i><small>61</small></div>
+            <div><span>サイクル</span><i><b style="width:47%"></b></i><small>47</small></div>
+            <div><span>耐久</span><i><b style="width:38%"></b></i><small>38</small></div>
+          </div>
+          <p class="panel-note">現在は仮データ。Builder実装後、登録した6匹から自動算出します。</p>
         </article>
 
         <article class="panel">
@@ -99,7 +133,17 @@
           <div id="pokemonList" class="pokemon-list"></div>
         </article>
 
-        <article id="pokemonDetail" class="panel hidden">
+        <article id="pokemonDetail" class="panel pokemon-detail hidden">
+          <div id="pokemonVisual" class="pokemon-visual theme-garchomp">
+            <div class="pokemon-art-placeholder" aria-hidden="true">
+              <span id="pokemonMonogram">G</span>
+            </div>
+            <div class="pokemon-visual-copy">
+              <p class="section-label">POKÉMON PROFILE</p>
+              <strong id="pokemonEnglishName">GARCHOMP</strong>
+              <small id="pokemonTypeLine">DRAGON / GROUND</small>
+            </div>
+          </div>
           <div class="panel-head">
             <div>
               <p class="section-label">DECISION VIEW</p>
@@ -218,7 +262,15 @@
         <article class="panel">
           <p class="section-label">PCCD ACADEMY</p>
           <h2>競技用語辞典</h2>
-          <input id="glossarySearch" class="search" placeholder="用語を検索">
+          <p class="academy-intro">分からない言葉をその場で理解し、実際の型や構築へつなげます。</p>
+          <div class="academy-levels" id="academyLevels">
+            <button class="selected" data-level="all">すべて</button>
+            <button data-level="basic">基礎</button>
+            <button data-level="battle">対戦</button>
+            <button data-level="build">構築</button>
+            <button data-level="research">研究</button>
+          </div>
+          <input id="glossarySearch" class="search" placeholder="A・努力値・受け出し など">
           <div id="glossaryList" class="stack"></div>
         </article>
       </section>

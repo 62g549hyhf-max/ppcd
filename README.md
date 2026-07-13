@@ -1,19 +1,22 @@
-# PCCD v0.6
+# PCCD v0.7 — Research OS
 
-v0.5までの機能を保持し、研究機能と用語支援を追加した統合版です。
+v0.6までの機能を保持し、UI FoundationとAcademy拡張を追加した統合版です。
 
-## 追加
-- PCCD Academy（競技用語辞典）
-- 用語のその場注釈
-- 事実 / 考察 / 仮説の表示分離
-- Evidence（根拠）表示
-- Confidence（信頼度）表示
-- 「受からない」を具体化した段階式質問
-- 対戦ログから次の研究候補を提案
-- 研究テーマ保存と対戦ログの関連強化
+## 主な更新
+- Apple × Linear × Arcを意識した全面UIリニューアル
+- ガラスカード、グラデーション、アニメーション
+- HomeにResearch OSヒーローとConfidenceリング
+- Team DNAプレビュー
+- ポケモン別テーマカードと将来画像用プレースホルダー
+- Academyのカテゴリフィルター
+- H / A / B / C / D / S
+- 努力値 / 個体値 / 性格 / AS252 / ぶっぱ
+- 勝ち筋 / 負け筋 / サイクル / 役割集中
+- 使用率 / 勝率 / 信頼度 / サンプル数
+- 既存のDecision / Research / Evidence / localStorage保存を維持
 
 ## 更新方法
-GitHubリポジトリ直下へ以下4ファイルをアップロードしてください。
+ZIPを解凍し、以下4ファイルをGitHubリポジトリ直下へアップロードしてください。
 
 - index.html
 - style.css
