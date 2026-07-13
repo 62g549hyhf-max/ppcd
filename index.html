@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PCCD Commit 002</title>
+<style>
+body{margin:0;background:#07101d;color:#eef4ff;font-family:-apple-system,sans-serif}
+header{padding:24px;background:#101a2e}
+h1{margin:0;font-size:42px}
+main{padding:16px;display:grid;gap:16px}
+.card{background:#101a2e;border:1px solid #2a3c5e;border-radius:14px;padding:16px}
+button{width:100%;padding:14px;margin-top:8px;border:0;border-radius:10px;background:#7ea4ff;color:#07101d;font-weight:bold}
+.list button{background:#16243d;color:#fff}
+small{color:#98a8c3}
+</style>
+</head>
+<body>
+<header>
+<small>PCCD v0.2</small>
+<h1>Pokémon Database</h1>
+</header>
+<main>
+<div class="card">
+<h2>検索</h2>
+<input id="q" placeholder="ポケモン名" style="width:100%;padding:12px;border-radius:8px;border:none">
+</div>
+
+<div class="card list">
+<h2>ポケモン一覧</h2>
+<div id="list"></div>
+</div>
+
+<div class="card">
+<h2>開発状況</h2>
+<ul>
+<li>✅ ホーム</li>
+<li>✅ ポケモン一覧</li>
+<li>⏳ ガブリアス詳細（次回）</li>
+<li>⏳ Decision View（次回）</li>
+</ul>
+</div>
+</main>
+
+<script>
+const mons=["ガブリアス","ルカリオ","メタグロス","サーフゴー","ミミッキュ"];
+const list=document.getElementById("list");
+function render(f=""){
+ list.innerHTML="";
+ mons.filter(x=>x.includes(f)).forEach(m=>{
+   const b=document.createElement("button");
+   b.textContent=m;
+   b.onclick=()=>alert(m+" の詳細画面はCommit003で実装します");
+   list.appendChild(b);
+ });
+}
+render();
+document.getElementById("q").oninput=e=>render(e.target.value);
+</script>
+</body>
+</html>
