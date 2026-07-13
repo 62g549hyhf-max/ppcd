@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#07101d">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="PCCD">
+  <title>PCCD Prototype v0.5</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Pokémon Champions Competitive Database</p>
+        <h1>PCCD</h1>
+        <p class="subtitle">考えることは減らさず、入力と整理の手間を減らす。</p>
+      </div>
+      <span class="version">v0.5</span>
+    </header>
+
+    <nav class="tabs" aria-label="メインメニュー">
+      <button class="tab active" data-page="home">Home</button>
+      <button class="tab" data-page="database">Pokémon</button>
+      <button class="tab" data-page="decision">Decision</button>
+      <button class="tab" data-page="research">Research</button>
+    </nav>
+
+    <main>
+      <section id="home" class="page active">
+        <div class="metrics">
+          <article class="metric"><span>未検証</span><strong id="metricUnverified">3</strong></article>
+          <article class="metric"><span>検証中</span><strong id="metricTesting">2</strong></article>
+          <article class="metric"><span>ログ</span><strong id="metricLogs">0</strong></article>
+        </div>
+
+        <article class="panel">
+          <p class="section-label">TODAY</p>
+          <h2>今、何に困っていますか？</h2>
+          <div class="choice-grid" id="homeProblems">
+            <button data-value="重いポケモン">重いポケモン</button>
+            <button data-value="勝ち筋不足">勝ち筋不足</button>
+            <button data-value="選出">選出</button>
+            <button data-value="プレイング">プレイング</button>
+          </div>
+          <button class="primary" id="startDecisionBtn">相談を始める</button>
+        </article>
+
+        <article class="panel">
+          <div class="panel-head">
+            <div>
+              <p class="section-label">CONTINUE</p>
+              <h2>続きから研究</h2>
+            </div>
+            <button class="ghost" data-page-link="research">一覧</button>
+          </div>
+          <div class="research-summary">
+            <strong>ガブリアスはスカーフが最適か？</strong>
+            <div class="progress"><span style="width:60%"></span></div>
+            <small>18 / 30戦 ・ 信頼度 67%</small>
+          </div>
+        </article>
+
+        <article class="panel">
+          <p class="section-label">QUICK LOG</p>
+          <h2>10秒で対戦ログ</h2>
+          <div class="quick-flow">
+            <label>結果
+              <select id="quickResult">
+                <option value="勝ち">勝ち</option>
+                <option value="負け">負け</option>
+              </select>
+            </label>
+            <label>相手
+              <select id="quickOpponent">
+                <option value="キュレム">キュレム</option>
+                <option value="ガブリアス">ガブリアス</option>
+                <option value="ルカリオ">ルカリオ</option>
+                <option value="メタグロス">メタグロス</option>
+                <option value="その他">その他</option>
+              </select>
+            </label>
+            <label>主因
+              <select id="quickCause">
+                <option value="構築">構築</option>
+                <option value="選出">選出</option>
+                <option value="プレイング">プレイング</option>
+                <option value="情報不足">情報不足</option>
+              </select>
+            </label>
+          </div>
+          <button class="primary" id="saveQuickLogBtn">保存</button>
+        </article>
+      </section>
+
+      <section id="database" class="page">
+        <article class="panel">
+          <p class="section-label">DATABASE</p>
+          <h2>ポケモンDB</h2>
+          <input id="pokemonSearch" class="search" placeholder="ポケモン名・役割で検索">
+          <div id="pokemonList" class="pokemon-list"></div>
+        </article>
+
+        <article id="pokemonDetail" class="panel hidden">
+          <div class="panel-head">
+            <div>
+              <p class="section-label">DECISION VIEW</p>
+              <h2 id="detailName">ガブリアス</h2>
+            </div>
+            <button class="ghost" id="closeDetailBtn">閉じる</button>
+          </div>
+          <div class="score-grid">
+            <div><span>理論</span><strong id="theoryScore">—</strong></div>
+            <div><span>環境</span><strong id="envScore">—</strong></div>
+            <div><span>総合</span><strong id="overallScore">—</strong></div>
+            <div><span>信頼度</span><strong id="confidenceScore">—</strong></div>
+          </div>
+
+          <h3>何役で使いたい？</h3>
+          <div id="roleChoices" class="choice-grid compact"></div>
+
+          <h3>候補Build</h3>
+          <div id="buildList" class="stack"></div>
+
+          <h3>採用理由</h3>
+          <div id="adoptReasons" class="chip-list"></div>
+
+          <h3>気になること</h3>
+          <div id="concerns" class="chip-list"></div>
+
+          <button class="primary" id="openDecisionFromPokemon">このポケモンで相談する</button>
+        </article>
+      </section>
+
+      <section id="decision" class="page">
+        <article class="panel">
+          <p class="section-label">DECISION SUPPORT</p>
+          <h2>構築相談</h2>
+          <div class="step">
+            <span>1</span>
+            <div>
+              <h3>何を解決したい？</h3>
+              <div class="choice-grid compact" id="decisionProblem">
+                <button data-value="重いポケモン">重いポケモン</button>
+                <button data-value="勝ち筋不足">勝ち筋不足</button>
+                <button data-value="選出">選出</button>
+                <button data-value="プレイング">プレイング</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="step">
+            <span>2</span>
+            <div>
+              <h3>対象は？</h3>
+              <div class="choice-grid compact" id="decisionTarget">
+                <button data-value="キュレム">キュレム</button>
+                <button data-value="ガブリアス">ガブリアス</button>
+                <button data-value="ルカリオ">ルカリオ</button>
+                <button data-value="メタグロス">メタグロス</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="step">
+            <span>3</span>
+            <div>
+              <h3>何が辛い？</h3>
+              <div class="choice-grid compact" id="decisionPain">
+                <button data-value="火力">火力</button>
+                <button data-value="上を取られる">上を取られる</button>
+                <button data-value="受からない">受からない</button>
+                <button data-value="型が読めない">型が読めない</button>
+              </div>
+            </div>
+          </div>
+
+          <button class="primary" id="generateAdviceBtn">改善候補を見る</button>
+        </article>
+
+        <article id="advicePanel" class="panel hidden">
+          <p class="section-label">RECOMMENDATION</p>
+          <h2>改善候補</h2>
+          <div id="adviceSummary" class="summary-box"></div>
+          <div id="adviceList" class="stack"></div>
+          <button class="ghost full" id="saveAsResearchBtn">研究テーマとして保存</button>
+        </article>
+      </section>
+
+      <section id="research" class="page">
+        <article class="panel">
+          <div class="panel-head">
+            <div>
+              <p class="section-label">RESEARCH</p>
+              <h2>研究テーマ</h2>
+            </div>
+            <button class="ghost" id="clearLogsBtn">ログ初期化</button>
+          </div>
+          <div id="researchList" class="stack"></div>
+        </article>
+
+        <article class="panel">
+          <p class="section-label">BATTLE LOG</p>
+          <h2>対戦ログ</h2>
+          <div id="battleLogList" class="stack"></div>
+        </article>
+      </section>
+    </main>
+  </div>
+
+  <div class="toast" id="toast"></div>
+  <script src="script.js"></script>
+</body>
+</html>
