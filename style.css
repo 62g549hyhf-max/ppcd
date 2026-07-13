@@ -9,6 +9,9 @@
   --accent2:#72ddb4;
   --warning:#ffd166;
   --danger:#ff8f8f;
+  --fact:#72ddb4;
+  --analysis:#7ea4ff;
+  --hypothesis:#ffd166;
 }
 *{box-sizing:border-box}
 html{background:var(--bg)}
@@ -31,8 +34,8 @@ h2{margin:0;font-size:20px}
 h3{margin:18px 0 9px;font-size:15px}
 .subtitle{margin:9px 0 0;color:var(--muted);font-size:13px;line-height:1.55}
 .version{padding:7px 10px;border:1px solid var(--line);border-radius:999px;background:rgba(16,26,46,.82);color:var(--muted);font-size:11px}
-.tabs{position:sticky;top:0;z-index:5;display:grid;grid-template-columns:repeat(4,1fr);gap:6px;padding:8px 0 12px;background:linear-gradient(180deg,#07101d 76%,transparent)}
-.tab{border:1px solid var(--line);border-radius:10px;padding:9px 6px;color:var(--muted);background:#0d182b;font-size:12px}
+.tabs{position:sticky;top:0;z-index:5;display:grid;grid-template-columns:repeat(5,1fr);gap:6px;padding:8px 0 12px;background:linear-gradient(180deg,#07101d 76%,transparent)}
+.tab{border:1px solid var(--line);border-radius:10px;padding:9px 6px;color:var(--muted);background:#0d182b;font-size:11px}
 .tab.active{background:var(--accent);color:#07101d;border-color:var(--accent);font-weight:900}
 .page{display:none}
 .page.active{display:grid;gap:12px}
@@ -57,7 +60,7 @@ h3{margin:18px 0 9px;font-size:15px}
 .primary{width:100%;border:0;background:var(--accent);color:#07101d}
 .ghost{border:1px solid var(--line);background:transparent;color:var(--text)}
 .ghost.full{width:100%;margin-top:12px}
-.research-summary,.summary-box{margin-top:13px;padding:13px;border-radius:12px;background:var(--panel2)}
+.research-summary,.summary-box{margin-top:13px;padding:13px;border-radius:12px;background:var(--panel2);line-height:1.6}
 .progress{height:8px;margin:10px 0 8px;border-radius:999px;background:#263550;overflow:hidden}
 .progress span{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2))}
 small{color:var(--muted)}
@@ -90,9 +93,28 @@ select,.search{width:100%;margin-top:5px;padding:10px;border:1px solid var(--lin
 .stack-item strong{display:block;margin-bottom:5px}
 .stack-item p{margin:0;color:var(--muted);font-size:13px;line-height:1.55}
 .stack-item .meta{margin-top:7px;color:#b8c8e6;font-size:11px}
+.evidence-box{display:grid;gap:8px;margin:12px 0}
+.evidence-row{display:grid;grid-template-columns:90px 1fr auto;gap:8px;align-items:center}
+.evidence-row span{color:var(--muted);font-size:11px}
+.evidence-bar{height:7px;border-radius:999px;background:#25344e;overflow:hidden}
+.evidence-bar i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2))}
+.tag{display:inline-flex;align-items:center;gap:5px;border-radius:999px;padding:5px 8px;font-size:10px;font-weight:900}
+.tag.fact{background:rgba(114,221,180,.16);color:var(--fact)}
+.tag.analysis{background:rgba(126,164,255,.16);color:var(--analysis)}
+.tag.hypothesis{background:rgba(255,209,102,.16);color:var(--hypothesis)}
+.knowledge-card{padding:12px;border-radius:11px;background:#14233b}
+.knowledge-card p{margin:7px 0 0;color:var(--muted);font-size:13px;line-height:1.55}
+.term-button{display:inline-flex;align-items:center;gap:6px;background:transparent;border:0;color:#b8cbff;padding:0;text-decoration:underline;text-decoration-style:dotted}
+.modal{position:fixed;inset:0;z-index:20;padding:4vh 14px;background:rgba(0,0,0,.72);overflow:auto}
+.modal-card{width:min(680px,100%);margin:0 auto;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:18px}
+.close-btn{float:right}
+.lead{font-size:16px;line-height:1.6}
+.example-box{margin-top:12px;padding:12px;border-left:4px solid var(--accent);background:var(--panel2);line-height:1.6}
 .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(10px);opacity:0;transition:.2s;padding:10px 13px;border:1px solid #3d588b;border-radius:999px;background:#1a2b49;color:var(--text);font-size:12px;pointer-events:none}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 @media(max-width:700px){
   .quick-flow{grid-template-columns:1fr}
   .score-grid{grid-template-columns:repeat(2,1fr)}
+  .tabs{grid-template-columns:repeat(5,minmax(0,1fr))}
+  .tab{font-size:10px;padding:9px 3px}
 }

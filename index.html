@@ -7,7 +7,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="PCCD">
-  <title>PCCD Prototype v0.5</title>
+  <title>PCCD v0.6</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -16,9 +16,9 @@
       <div>
         <p class="eyebrow">Pokémon Champions Competitive Database</p>
         <h1>PCCD</h1>
-        <p class="subtitle">考えることは減らさず、入力と整理の手間を減らす。</p>
+        <p class="subtitle">考えることは減らさず、入力・整理・調べる手間を減らす。</p>
       </div>
-      <span class="version">v0.5</span>
+      <span class="version">v0.6</span>
     </header>
 
     <nav class="tabs" aria-label="メインメニュー">
@@ -26,6 +26,7 @@
       <button class="tab" data-page="database">Pokémon</button>
       <button class="tab" data-page="decision">Decision</button>
       <button class="tab" data-page="research">Research</button>
+      <button class="tab" data-page="academy">Academy</button>
     </nav>
 
     <main>
@@ -51,16 +52,11 @@
         <article class="panel">
           <div class="panel-head">
             <div>
-              <p class="section-label">CONTINUE</p>
-              <h2>続きから研究</h2>
+              <p class="section-label">NEXT STEP</p>
+              <h2>次に検証すること</h2>
             </div>
-            <button class="ghost" data-page-link="research">一覧</button>
           </div>
-          <div class="research-summary">
-            <strong>ガブリアスはスカーフが最適か？</strong>
-            <div class="progress"><span style="width:60%"></span></div>
-            <small>18 / 30戦 ・ 信頼度 67%</small>
-          </div>
+          <div id="nextResearchCard" class="research-summary"></div>
         </article>
 
         <article class="panel">
@@ -111,6 +107,7 @@
             </div>
             <button class="ghost" id="closeDetailBtn">閉じる</button>
           </div>
+
           <div class="score-grid">
             <div><span>理論</span><strong id="theoryScore">—</strong></div>
             <div><span>環境</span><strong id="envScore">—</strong></div>
@@ -118,11 +115,16 @@
             <div><span>信頼度</span><strong id="confidenceScore">—</strong></div>
           </div>
 
+          <div id="evidenceBox" class="evidence-box"></div>
+
           <h3>何役で使いたい？</h3>
           <div id="roleChoices" class="choice-grid compact"></div>
 
           <h3>候補Build</h3>
           <div id="buildList" class="stack"></div>
+
+          <h3>判断材料</h3>
+          <div id="knowledgeBlocks" class="stack"></div>
 
           <h3>採用理由</h3>
           <div id="adoptReasons" class="chip-list"></div>
@@ -138,6 +140,7 @@
         <article class="panel">
           <p class="section-label">DECISION SUPPORT</p>
           <h2>構築相談</h2>
+
           <div class="step">
             <span>1</span>
             <div>
@@ -168,12 +171,14 @@
             <span>3</span>
             <div>
               <h3>何が辛い？</h3>
-              <div class="choice-grid compact" id="decisionPain">
-                <button data-value="火力">火力</button>
-                <button data-value="上を取られる">上を取られる</button>
-                <button data-value="受からない">受からない</button>
-                <button data-value="型が読めない">型が読めない</button>
+              <div class="choice-grid compact" id="decisionCategory">
+                <button data-value="攻撃面">攻撃面</button>
+                <button data-value="防御面">防御面</button>
+                <button data-value="選出面">選出面</button>
+                <button data-value="情報面">情報面</button>
               </div>
+
+              <div id="decisionPain" class="choice-grid compact"></div>
             </div>
           </div>
 
@@ -185,6 +190,7 @@
           <h2>改善候補</h2>
           <div id="adviceSummary" class="summary-box"></div>
           <div id="adviceList" class="stack"></div>
+          <div id="adviceEvidence" class="evidence-box"></div>
           <button class="ghost full" id="saveAsResearchBtn">研究テーマとして保存</button>
         </article>
       </section>
@@ -196,7 +202,7 @@
               <p class="section-label">RESEARCH</p>
               <h2>研究テーマ</h2>
             </div>
-            <button class="ghost" id="clearLogsBtn">ログ初期化</button>
+            <button class="ghost" id="clearLogsBtn">保存データ初期化</button>
           </div>
           <div id="researchList" class="stack"></div>
         </article>
@@ -207,7 +213,28 @@
           <div id="battleLogList" class="stack"></div>
         </article>
       </section>
+
+      <section id="academy" class="page">
+        <article class="panel">
+          <p class="section-label">PCCD ACADEMY</p>
+          <h2>競技用語辞典</h2>
+          <input id="glossarySearch" class="search" placeholder="用語を検索">
+          <div id="glossaryList" class="stack"></div>
+        </article>
+      </section>
     </main>
+  </div>
+
+  <div id="glossaryModal" class="modal hidden" role="dialog" aria-modal="true">
+    <div class="modal-card">
+      <button id="closeGlossaryModal" class="ghost close-btn">閉じる</button>
+      <p class="section-label">PCCD ACADEMY</p>
+      <h2 id="glossaryTerm"></h2>
+      <p id="glossaryShort" class="lead"></p>
+      <div id="glossaryDetail" class="summary-box"></div>
+      <div id="glossaryExample" class="example-box"></div>
+      <div id="glossaryRelated" class="chip-list"></div>
+    </div>
   </div>
 
   <div class="toast" id="toast"></div>
